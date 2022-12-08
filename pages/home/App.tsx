@@ -29,7 +29,7 @@ const App = () => {
   const [value8, setValue8] = useState("");
   const [value9, setValue9] = useState("");
 
-  const values: any = {
+  const values: Record<string, any[]> = {
     "1": [value1, setValue1],
     "2": [value2, setValue2],
     "3": [value3, setValue3],
@@ -61,7 +61,6 @@ const App = () => {
   const changeTurn = async (id: string) => {
     if (!finished && values[id][0] !== "X" && values[id][0] !== "O") {
       values[id][1](turn ? "X" : "O");
-
       setTurn(!!!turn);
     }
   };
@@ -157,19 +156,9 @@ const App = () => {
         <center>
           {finished ? (
             <h2
-              onClick={() => {
-                for (let i: number = 0; i < 9; i++) {
-                  setValue1("");
-                  setValue2("");
-                  setValue3("");
-                  setValue4("");
-                  setValue5("");
-                  setValue6("");
-                  setValue7("");
-                  setValue8("");
-                  setValue9("");
-                }
-              }}
+              onClick={() =>
+                Object.keys(values).map((val: any) => values[val][1](""))
+              }
             >
               replay
             </h2>
