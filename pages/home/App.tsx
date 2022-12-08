@@ -156,9 +156,10 @@ const App = () => {
         <center>
           {finished ? (
             <h2
-              onClick={() =>
-                Object.keys(values).map((val: any) => values[val][1](""))
-              }
+              onClick={() => {
+                Object.keys(values).map((val: any) => values[val][1](""));
+                setFinished(false);
+              }}
             >
               replay
             </h2>
