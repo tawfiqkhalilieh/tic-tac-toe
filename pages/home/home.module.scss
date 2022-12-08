@@ -1,0 +1,54 @@
+// box template inspired by: https://www.youtube.com/watch?v=phWxA89Dy94&t=242s
+$clr-dark: #0f172a;
+$clr-light: #f1f5f9;
+$clr-accent: #e11d48;
+
+.homeContainer {
+  display: flex;
+
+  // body
+  margin: 0;
+  padding: 1rem;
+  padding-top: 5rem;
+  line-height: 1.6;
+  word-spacing: 1.4px;
+  font-family: "Roboto", sans-serif;
+  color: $clr-dark;
+  background-color: $clr-light;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  height: 100vh;
+
+  // container
+  width: 80%;
+  height: 700px;
+  margin: 0 auto;
+  border: 10px solid $clr-dark;
+
+  .box {
+    width: 150px;
+    height: 150px;
+    background-color: #f1f5f9;
+    padding: 1em;
+
+    text-align: center;
+    border: 10px solid $clr-accent;
+    border-radius: 10px;
+
+    justify-content: center;
+    justify-items: center;
+
+    .text {
+      width: 120px;
+      height: 120px;
+      color: $clr-dark;
+    }
+  }
+}
+
+// *,
+// *::before,
+// *::after {
+//   box-sizing: border-box;
+// }
