@@ -56,6 +56,18 @@ const App = () => {
     if (XO[2][0] === XO[1][1] && XO[2][0] === XO[0][2]) return XO[2][0];
     if (XO[1][2] === XO[1][1] && XO[1][2] === XO[1][0]) return XO[1][2];
     if (XO[2][0] === XO[2][1] && XO[2][0] === XO[2][2]) return XO[2][0];
+    const flatBoard = [
+      value1,
+      value2,
+      value3,
+      value4,
+      value5,
+      value6,
+      value7,
+      value8,
+      value9,
+    ];
+    return !flatBoard.includes("") ? "Draw" : false;
   };
 
   const changeTurn = async (id: string) => {
@@ -66,22 +78,27 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (checkWinner()) {
-      toast(`${checkWinner()} is the winner!`);
+    if ("Draw" === checkWinner()) {
+      toast(`Draw, there is no winner!`);
       setFinished(true);
+    } else {
+      if (![false, ""].includes(checkWinner())) {
+        toast(`${checkWinner()} is the winner!`);
+        setFinished(true);
+      }
     }
   });
 
   return (
-    <>
+    <div className={styles.background}>
+      <ToastContainer />
       <center>
         <h1> Turn: {turn ? "X" : "O"}</h1>
-        <ToastContainer />
       </center>
 
       <div className={styles.homeContainer}>
-        <div className={styles.row} onClick={() => changeTurn("1")}>
-          <div className={styles.box}>
+        <div className={styles.row}>
+          <div className={styles.box} onClick={() => changeTurn("1")}>
             <center>
               <h1 id="1" className={styles.text} ref={ref1}>
                 {values["1"][0]}
@@ -166,7 +183,7 @@ const App = () => {
           ) : undefined}
         </center>
       </>
-    </>
+    </div>
   );
 };
 
